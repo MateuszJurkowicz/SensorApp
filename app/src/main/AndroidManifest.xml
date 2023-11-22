@@ -13,6 +13,9 @@
         android:theme="@style/Theme.SensorApp"
         tools:targetApi="33">
         <activity
+            android:name=".SensorDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".SensorActivity"
             android:exported="true">
             <intent-filter>

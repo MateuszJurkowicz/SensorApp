@@ -1,15 +1,21 @@
-    package com.example.sensorapp;
+    /*TYPE_STEP_COUNTER(18) śledzi ogólną liczbę kroków od momentu uruchomienia,
+    podczas gdy TYPE_STEP_DETECTOR(19) reaguje na pojedyncze kroki. .
+     */
+
+package com.example.sensorapp;
 
     import androidx.annotation.NonNull;
     import androidx.annotation.Nullable;
     import androidx.appcompat.app.ActionBar;
     import androidx.appcompat.app.AlertDialog;
     import androidx.appcompat.app.AppCompatActivity;
+    import androidx.core.content.ContextCompat;
     import androidx.recyclerview.widget.LinearLayoutManager;
     import androidx.recyclerview.widget.RecyclerView;
 
     import android.app.Dialog;
     import android.content.Context;
+    import android.graphics.Color;
     import android.hardware.Sensor;
     import android.hardware.SensorManager;
     import android.os.Bundle;
@@ -33,12 +39,18 @@
         public SensorAdapter adapter;
         private SensorManager sensorManager;
         private List<Sensor> sensorList;
+        private Sensor sensorLight;
         public boolean subtitleVisible;
+        private int colorChosenSensor;
+        private int colorDefaultSensor;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.sensor_activity);
+
+            colorChosenSensor = ContextCompat.getColor(this, R.color.show_chosen_sensor);
+            colorDefaultSensor = ContextCompat.getColor(this, R.color.show_default_sensor);
 
             recyclerView = findViewById(R.id.sensor_recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -102,13 +114,21 @@
                 sensor = s;
                 sensorIconImageView.setImageResource(R.drawable.sensor_image);
                 sensorNameTextView.setText(s.getName());
+                if(sensor.getType() == Sensor.TYPE_LIGHT || sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
+                    sensorIconImageView.setBackgroundColor(colorChosenSensor);
+                    sensorNameTextView.setBackgroundColor(colorChosenSensor);
+                }
+                else {
+                    sensorIconImageView.setBackgroundColor(colorDefaultSensor);
+                    sensorNameTextView.setBackgroundColor(colorDefaultSensor);
+                }
 
             }
             @Override
             public boolean onLongClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(SensorActivity.this);
 
-                builder.setMessage("Producent: " + sensor.getVendor() + "\nMaksymalna wartość: " + sensor.getMaximumRange())
+                builder.setMessage("Producent: " + sensor.getVendor() + "\nTyp czujnika: " + sensor.getType() + "\nMaksymalna wartość: " + sensor.getMaximumRange())
                         .setTitle("Informacja o czujniku");
                 AlertDialog dialog = builder.create();
                 dialog.show();
