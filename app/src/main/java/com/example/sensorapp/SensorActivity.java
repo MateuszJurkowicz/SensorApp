@@ -2,6 +2,7 @@
 
     import androidx.annotation.NonNull;
     import androidx.annotation.Nullable;
+    import androidx.appcompat.app.ActionBar;
     import androidx.appcompat.app.AlertDialog;
     import androidx.appcompat.app.AppCompatActivity;
     import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +15,9 @@
     import android.os.Bundle;
     import android.util.AttributeSet;
     import android.view.LayoutInflater;
+    import android.view.Menu;
+    import android.view.MenuInflater;
+    import android.view.MenuItem;
     import android.view.View;
     import android.view.ViewGroup;
     import android.widget.Adapter;
@@ -29,6 +33,7 @@
         public SensorAdapter adapter;
         private SensorManager sensorManager;
         private List<Sensor> sensorList;
+        public boolean subtitleVisible;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +53,37 @@
                 adapter.notifyDataSetChanged();
             }
         }
-        @Nullable
+
         @Override
-        public View onCreateView(@NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
-            return super.onCreateView(name, context, attrs);
+        public boolean onCreateOptionsMenu(Menu menu) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.sensorapp_menu, menu);
+            return true;
         }
 
-
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            if(item.getItemId() == R.id.show_subtitle) {
+                subtitleVisible = !subtitleVisible;
+                this.invalidateOptionsMenu();
+                showSubtitle();
+                return true;
+            }
+            else {
+                return super.onOptionsItemSelected(item);
+            }
+        }
+        public void showSubtitle()
+        {
+            String subtitle = getString(R.string.sensors_count, sensorList.size());
+            if(!subtitleVisible) {
+                subtitle = null;
+            }
+            ActionBar actionBar = this.getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setSubtitle(subtitle);
+            }
+        }
         private class SensorHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener {
             public ImageView sensorIconImageView;
             public TextView sensorNameTextView;

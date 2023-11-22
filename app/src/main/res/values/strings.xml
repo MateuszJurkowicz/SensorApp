@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SensorApp</string>
+    <string name="show_subtitle">Pokaż podtytuł</string>
+    <string name="sensors_count">Liczba czujników: %d</string>
 </resources>
