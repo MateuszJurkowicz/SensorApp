@@ -3,5 +3,20 @@
     <string name="show_subtitle">Pokaż podtytuł</string>
     <string name="sensors_count">Liczba czujników: %d</string>
     <string name="missing_sensor">Brak czujnika</string>
-    <string name="light_sensor_label">%d</string>
+    <string name="light_sensor_label">Wartość światła: %.3f lx
+        \n\n0,1 nx	bezksiężycowe, pochmurne nocne niebo
+        \n2 nx	bezksiężycowe, przejrzyste nocne niebo wraz z poświatą niebieską
+        \n50 nx – 300 nx	księżyc w pełni podczas bezchmurnej nocy
+        \n3 – 3,2 lx	poziom jasności podczas końcówki zmierzchu cywilnego przy bezchmurnym niebie
+        \n50 lx	natężenie światła w pokoju dziennym (Australia, 1998)
+        \n80 lx	natężenie światła w biurowym korytarzu/toalecie
+        \n100 lx	bardzo pochmurny dzień
+        \n320 – 400 lx	oświetlenie w biurze
+        \n400 – 500 lx	wschód oraz zachód Słońca (przy bezchmurnym niebie)
+        \n1000 lx	pochmurny dzień; natężenie światła w typowym studiu TV
+        \n10 000 – 25 000 lx	światło dzienne (lecz nie bezpośrednie światło słoneczne)
+        \n32 000 – 100 000 lx	promieniowanie słoneczne
+    </string>
+    <string name="step_counter_sensor_label">Step counter: %.1f</string>
+    <string name="step_detector_sensor_label">Postawiono krok</string>
 </resources>
