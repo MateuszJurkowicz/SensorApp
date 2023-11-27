@@ -21,7 +21,18 @@
     <string name="step_detector_sensor_label">Uwaga! Właśnie postawiono krok</string>
     <string name="not_step_detector_sensor_label">Nie postawiłeś jeszcze kroku</string>
     <string name="location_button">Pobierz lokalizację</string>
-    <string name="location_textView">Wciśnij przycisk, aby pobrać ostatnią lokaliację</string>
+    <string name="location_textview">Użyj przycisku, aby pobrać ostatnią lokalizację</string>
     <string name="location_permission_denied">Odmówiono dostępu do lokalizacji</string>
+    <string name="location_text">"Szerokość geograficzna: %1$.4f°
+        \nDługość geograficzna: %2$.4f°
+        \nCzas: %3$tr"</string>
+    <string name="no_location">Nie udało się znaleźć poprawnie lokalizacji</string>
+    <string name="address_button">Pobierz adres</string>
+    <string name="address_textview">Użyj przycisku, aby wyświetlić dokładny adres</string>
+    <string name="address_text">"Adres: %1$s
+        \nCzas: %2$tr"</string>
+    <string name="service_not_available">Coś poszło nie tak...</string>
+    <string name="no_address_found">Nie odnaleziono adresu</string>
+
 
 </resources>

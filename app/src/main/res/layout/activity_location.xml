@@ -6,19 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".LocationActivity">
 
-    <Button
-        android:id="@+id/location_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="525dp"
-        android:text="@string/location_button" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/location_button"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="550dp"
+            android:layout_marginStart="15dp"
+            android:text="@string/location_button" />
+
+        <Button
+            android:id="@+id/address_button"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="550dp"
+            android:layout_marginLeft="15dp"
+            android:text="@string/address_button" />
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/location_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="500dp"
-        android:text="@string/location_textView" />
+        android:layout_marginTop="200dp"
+        android:text="@string/location_textview" />
+    <TextView
+        android:id="@+id/address_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"
+        android:text="@string/address_textview" />
 </RelativeLayout>

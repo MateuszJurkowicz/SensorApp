@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="show_chosen_sensor">#ABE4FD</color>
+    <color name="show_chosen_sensor">#9DE1FF</color>
     <color name="show_default_sensor">#CBEFFF</color>
     <color name="show_magnetometer_sensor">#B9FFBC</color>
 </resources>
