@@ -18,6 +18,7 @@ public class SensorDetailsActivity extends AppCompatActivity implements SensorEv
     private Sensor sensorStepDetector;
     private Sensor sensorStepCounter;
     private TextView sensorTextView;
+    private int selectedSensorType;
 
 
     @Override
@@ -25,6 +26,10 @@ public class SensorDetailsActivity extends AppCompatActivity implements SensorEv
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sensor_details);
 
+        Intent intent = getIntent();
+        if (intent.hasExtra("sensorType")) {
+            selectedSensorType = intent.getIntExtra("sensorType", -1);
+        }
 
         sensorTextView = findViewById(R.id.sensor_light_label);
 
@@ -67,13 +72,18 @@ public class SensorDetailsActivity extends AppCompatActivity implements SensorEv
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
+        Log.d("OnAccuracyChanged", "Użyto onAccuracyChanged");
     }
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         int sensorType = sensorEvent.sensor.getType();
         float[] values = sensorEvent.values;
+
+        if (selectedSensorType != sensorType) {
+            return;
+        }
+
         switch (sensorType) {
             case Sensor.TYPE_LIGHT:
                 sensorTextView.setText(getResources().getString(R.string.light_sensor_label, values[0]));
@@ -82,7 +92,10 @@ public class SensorDetailsActivity extends AppCompatActivity implements SensorEv
                 sensorTextView.setText(getResources().getString(R.string.step_counter_sensor_label, values[0]));
                 break;
             case Sensor.TYPE_STEP_DETECTOR:
-                sensorTextView.setText(getResources().getString(R.string.step_detector_sensor_label));
+                if (values[0] == 1.0)
+                    sensorTextView.setText(getResources().getString(R.string.step_detector_sensor_label));
+                else
+                    sensorTextView.setText(getResources().getString(R.string.not_step_detector_sensor_label));
                 break;
         }
     }

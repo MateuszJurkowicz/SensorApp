@@ -38,12 +38,13 @@ import java.util.List;
 public class SensorActivity extends AppCompatActivity {
     public RecyclerView recyclerView;
     public SensorAdapter adapter;
+    public boolean subtitleVisible;
     private SensorManager sensorManager;
     private List<Sensor> sensorList;
     private Sensor sensorLight;
-    public boolean subtitleVisible;
     private int colorChosenSensor;
     private int colorDefaultSensor;
+    private int colorMagnetometerSensor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class SensorActivity extends AppCompatActivity {
 
         colorChosenSensor = ContextCompat.getColor(this, R.color.show_chosen_sensor);
         colorDefaultSensor = ContextCompat.getColor(this, R.color.show_default_sensor);
+        colorMagnetometerSensor = ContextCompat.getColor(this, R.color.show_magnetometer_sensor);
 
         recyclerView = findViewById(R.id.sensor_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -118,6 +120,9 @@ public class SensorActivity extends AppCompatActivity {
             if (sensor.getType() == Sensor.TYPE_LIGHT || sensor.getType() == Sensor.TYPE_STEP_DETECTOR || sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
                 sensorIconImageView.setBackgroundColor(colorChosenSensor);
                 sensorNameTextView.setBackgroundColor(colorChosenSensor);
+            } else if (sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+                sensorIconImageView.setBackgroundColor(colorMagnetometerSensor);
+                sensorNameTextView.setBackgroundColor(colorMagnetometerSensor);
             } else {
                 sensorIconImageView.setBackgroundColor(colorDefaultSensor);
                 sensorNameTextView.setBackgroundColor(colorDefaultSensor);
@@ -137,9 +142,15 @@ public class SensorActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(SensorActivity.this, SensorDetailsActivity.class);
-            intent.putExtra("sensorType", sensor.getType());
-            startActivity(intent);
+            if (sensor.getType() == sensor.TYPE_MAGNETIC_FIELD) {
+                Intent intent = new Intent(SensorActivity.this, LocationActivity.class);
+                intent.putExtra("sensorType", sensor.getType());
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(SensorActivity.this, SensorDetailsActivity.class);
+                intent.putExtra("sensorType", sensor.getType());
+                startActivity(intent);
+            }
         }
     }
 

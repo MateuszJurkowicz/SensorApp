@@ -8,7 +8,7 @@
         \n2 nx	bezksiężycowe, przejrzyste nocne niebo wraz z poświatą niebieską
         \n50 nx – 300 nx	księżyc w pełni podczas bezchmurnej nocy
         \n3 – 3,2 lx	poziom jasności podczas końcówki zmierzchu cywilnego przy bezchmurnym niebie
-        \n50 lx	natężenie światła w pokoju dziennym (Australia, 1998)
+        \n50 lx	natężenie światła w pokoju dziennym
         \n80 lx	natężenie światła w biurowym korytarzu/toalecie
         \n100 lx	bardzo pochmurny dzień
         \n320 – 400 lx	oświetlenie w biurze
@@ -17,6 +17,11 @@
         \n10 000 – 25 000 lx	światło dzienne (lecz nie bezpośrednie światło słoneczne)
         \n32 000 – 100 000 lx	promieniowanie słoneczne
     </string>
-    <string name="step_counter_sensor_label">Step counter: %.1f</string>
-    <string name="step_detector_sensor_label">Postawiono krok</string>
+    <string name="step_counter_sensor_label">Ilość kroków od ostatniego resetu telefonu: %.1f</string>
+    <string name="step_detector_sensor_label">Uwaga! Właśnie postawiono krok</string>
+    <string name="not_step_detector_sensor_label">Nie postawiłeś jeszcze kroku</string>
+    <string name="location_button">Pobierz lokalizację</string>
+    <string name="location_textView">Wciśnij przycisk, aby pobrać ostatnią lokaliację</string>
+    <string name="location_permission_denied">Odmówiono dostępu do lokalizacji</string>
+
 </resources>
